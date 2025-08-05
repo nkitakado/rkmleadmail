@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+.inbox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inbox-email {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 16px;
+  background: #f8fafc;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(99,102,241,0.08);
+  padding: 16px 20px;
+  transition: box-shadow 0.15s, background 0.15s;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.inbox-email:hover {
+  box-shadow: 0 4px 20px rgba(99,102,241,0.17);
+  background: #eef2ff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.email-icons {
+  display: flex;
+  gap: 8px;
+  min-width: 50px;
+  align-items: center;
+}
+
+.email-icon {
+  font-size: 1.18em;
+  color: #bdbdbd;
+  vertical-align: middle;
+  transition: color 0.18s;
+}
+
+.email-icon.star {
+  color: #ffd600;
+}
+
+.email-icon.important {
+  color: #ff5757;
+}
+
+.email-icon.attachment {
+  color: #6366f1;
+}
+
+.email-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  width: 100%;
+}
+
+.email-subject {
+  font-weight: 600;
+  font-size: 1.09em;
+  color: #23272f;
+  margin-right: 8px;
+}
+
+.email-label {
+  font-size: 0.88em;
+  font-weight: 500;
+  padding: 3px 11px;
+  border-radius: 7px;
+  letter-spacing: 0.01em;
+  margin-right: 6px;
+  color: #fff;
+  background: #6366f1;
+  box-shadow: 0 1px 4px rgba(99,102,241,0.15);
+  display: inline-block;
+}
+
+.label-updates {
+  background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+}
+.label-finance {
+  background: linear-gradient(90deg, #ff8a65 40%, #ffd600 100%);
+  color: #23272f;
+}
+.label-work {
+  background: linear-gradient(90deg, #34d399 0%, #6366f1 100%);
+}
+
+.email-from {
+  font-size: 0.95em;
+  color: #6366f1;
+  font-weight: 400;
+  background: #e0e7ff;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.email-date {
+  font-size: 0.92em;
+  color: #94a3b8;
+  margin-left: auto;
+  font-weight: 400;
 }

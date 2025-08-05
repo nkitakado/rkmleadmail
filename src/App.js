@@ -1,31 +1,38 @@
-import React from "react";
-import MainLayout from "./components/MainLayout";
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';
+import { FaHome, FaList, FaCog, FaPaperPlane, FaInbox, FaUpload } from 'react-icons/fa';
+import SendEmail from './SendEmail';
+import Inbox from './Inbox';
+import SentMail from './SentMail';
+import BulkUpload from './BulkUpload';
 
-function Dashboard() {
+const TABS = [
+  { id: 'home', label: 'Home', icon: <FaHome /> },
+  { id: 'tasks', label: 'Tasks', icon: <FaList /> },
+  { id: 'inbox', label: 'Inbox', icon: <FaInbox /> },
+  { id: 'sent', label: 'Sent', icon: <FaPaperPlane /> },
+  { id: 'bulk', label: 'Bulk Upload', icon: <FaUpload /> },
+  { id: 'settings', label: 'Settings', icon: <FaCog /> },
+  { id: 'send', label: 'Send Email', icon: <FaPaperPlane /> },
+];
+
+function App() {
+  const [activeTab, setActiveTab] = useState('home');
+
   return (
-    <section>
-      <h1 style={{ fontWeight: 700, fontSize: "2rem", marginBottom: "2rem" }}>
-        Dashboard
-      </h1>
-      {/* Add your dashboard widgets/charts here */}
-      <div style={{
-        background: "#22243c",
-        borderRadius: "16px",
-        padding: "2rem",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.12)"
-      }}>
-        <p style={{ fontSize: "1.1rem" }}>
-          Welcome to your analytics dashboard.
-        </p>
-      </div>
-    </section>
+    <div className="container">
+      <Sidebar tabs={TABS} activeTab={activeTab} onTabClick={setActiveTab} />
+      <main className="main-content">
+        {activeTab === 'home' && <h1>Welcome Home</h1>}
+        {activeTab === 'tasks' && <h1>Task List</h1>}
+        {activeTab === 'inbox' && <Inbox />}
+        {activeTab === 'sent' && <SentMail />}
+        {activeTab === 'bulk' && <BulkUpload />}
+        {activeTab === 'settings' && <h1>Settings</h1>}
+        {activeTab === 'send' && <SendEmail />}
+      </main>
+    </div>
   );
 }
 
-export default function App() {
-  return (
-    <MainLayout>
-      <Dashboard />
-    </MainLayout>
-  );
-}
+export default App;
